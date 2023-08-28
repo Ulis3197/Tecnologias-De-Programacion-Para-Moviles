@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "tarea3",
-    "slug": "tarea3",
+    "name": "input",
+    "slug": "input",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
