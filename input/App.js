@@ -1,20 +1,13 @@
-import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Dimensions,
-  TextInput,
-} from "react-native";
-import Login from "./src/screens/Login";
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, Image, Dimensions, TextInput } from 'react-native';
+import Login from './src/screens/Login';
 
 export default function App() {
-  const { height, width } = Dimensions.get("screen");
+  const {height,width} = Dimensions.get('screen');
 
   return (
     <View style={styles.container}>
-      <Login />
+      <Login/>
     </View>
   );
 }
@@ -22,6 +15,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
