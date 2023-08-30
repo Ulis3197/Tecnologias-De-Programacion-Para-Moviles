@@ -10,12 +10,11 @@ export default function Login() {
         fontSize={40}
         color={"white"}
         marginBottom={10}
-        paddingBottom={10}
       />
       <TextStyled
         text={"Sign in to your Account"}
-        fontSize={10}
-        color={"white"}
+        fontSize={15}
+        color={"#96a8a8"}
       />
     </View>
   );
@@ -25,9 +24,11 @@ const { height, width } = Dimensions.get("screen");
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: "black",
+    backgroundColor: "#0c1c2c",
     width: width,
     height: height / 3,
-    justifyContent: "center",
+    justifyContent: "flex-end",
+    paddingBottom: 50,
+    padding: 20,
   },
 });

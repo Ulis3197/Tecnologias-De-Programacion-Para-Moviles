@@ -26,11 +26,15 @@ export default function Login() {
           paddingVertical={15}
           marginVertical={20}
         ></TouchableStyled>
-        <TextStyled
-          text={"Or login with"}
-          textAlign={"center"}
-          marginTop={20}
-        ></TextStyled>
+        <View style={{flexDirection: 'row', gap: 20}}>
+          <View style={styles.line}></View>
+          <TextStyled
+            text={"Or login with"}
+            textAlign={"center"}
+            marginTop={20}
+          ></TextStyled>
+          <View style={styles.line}></View>
+        </View>
         <View style={styles.contentButton}>
           <TouchableStyled
             text={"Google"}
@@ -59,7 +63,6 @@ export default function Login() {
 const { height, width } = Dimensions.get("screen");
 const styles = StyleSheet.create({
   content: {
-    alignItems: "center",
     height: (height / 3) * 2,
     width: width,
     backgroundColor: "white",
@@ -73,8 +76,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   contentInput: {
-    marginTop: 40,
-    width: (width / 5) * 4,
+    padding: 20,
   },
   contentButton: {
     marginVertical: 20,
@@ -86,4 +88,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 30,
   },
+  line:{
+    borderBottomWidth: 1,
+    flex: 1,
+    borderColor: 'black',
+    marginBottom: 8,
+  }
 });
