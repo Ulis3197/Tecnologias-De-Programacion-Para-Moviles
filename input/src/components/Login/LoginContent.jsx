@@ -57,6 +57,7 @@ export default function Login() {
         </View>
       </View>
     </View>
+    
   );
 }
 
