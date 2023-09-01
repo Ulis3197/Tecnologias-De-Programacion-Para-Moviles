@@ -10,15 +10,26 @@ export default function Login({
   paddingHorizontal,
   paddingVertical,
   marginVertical,
+  marginHorizontal,
   width,
   height,
+  color
 }) {
   return (
     <TouchableOpacity
-      style={{ borderRadius, backgroundColor, paddingHorizontal, paddingVertical, marginVertical, width, height }}
+      style={{
+        borderRadius,
+        backgroundColor,
+        paddingHorizontal,
+        paddingVertical,
+        marginVertical,
+        marginHorizontal,
+        width,
+        height,
+      }}
       onPress={onPress}
     >
-      <TextStyled text={text} textAlign={'center'} fontSize={15}></TextStyled>
+      <TextStyled text={text} textAlign={"center"} fontSize={10} color={color}></TextStyled>
     </TouchableOpacity>
   );
 }
