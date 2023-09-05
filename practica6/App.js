@@ -1,13 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, StatusBar as Status2 } from 'react-native';
-import Constants from 'expo-constants';
+import { StatusBar } from "expo-status-bar";
+import {
+  StyleSheet,
+  Text,
+  View,
+  StatusBar as Status2,
+  Platform,
+} from "react-native";
+import Constants from "expo-constants";
 import { Ionicons } from "@expo/vector-icons";
+import AndriodText from "./src/components/Text/AndriodText";
+import WebText from "./src/components/Text/WebText";
 
 export default function App() {
+  const CustomText = Platform.select({
+    android: () => AndriodText,
+    web: () => WebText,
+  })();
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <Ionicons name="notifications" size={24} color="black" />
+      <CustomText />
+      <Ionicons
+        name="notifications"
+        size={24}
+        color={Platform.select({
+          android: "black",
+          ios: "black",
+          web: "white",
+        })}
+      />
       <StatusBar style="auto" />
     </View>
   );
@@ -16,8 +37,16 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'orange',
-    paddingTop : Constants.statusBarHeight
+    backgroundColor: Platform.select({
+      android: "white",
+      ios: "white",
+      web: "black",
+    }),
+    justifyContent: "center",
+    alignItems: "center",
+    // paddingTop : Constants.statusBarHeight
+  },
+  text: {
+    color: Platform.select({ android: "black", ios: "black", web: "white" }),
   },
 });
-
