@@ -1,5 +1,5 @@
 {
-  "name": "input",
+  "name": "practica6",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "expo": "~49.0.8",
+    "expo-constants": "~14.4.2",
     "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
+    "react-icons": "^4.10.1",
     "react-native": "0.72.4"
   },
   "devDependencies": {
