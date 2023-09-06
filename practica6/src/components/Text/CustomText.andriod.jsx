@@ -1,7 +1,7 @@
-import React from 'react'
-import { Text } from 'react-native'
+import React from "react";
+import { Text } from "react-native";
 
-function AndriodText() {
+function CustomText() {
   return (
     <>
       <Text>Andriod</Text>
@@ -13,4 +13,4 @@ function AndriodText() {
   );
 }
 
-export default AndriodText
+export default CustomText;

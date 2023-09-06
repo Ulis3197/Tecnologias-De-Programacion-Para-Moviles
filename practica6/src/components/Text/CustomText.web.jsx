@@ -1,6 +1,7 @@
-import React from 'react'
+import React from "react";
+import { Text } from "react-native";
 
-function WebText() {
+function CustomText() {
   return (
     <>
       <Text>Web</Text>
@@ -12,4 +13,4 @@ function WebText() {
   );
 }
 
-export default WebText
+export default CustomText;

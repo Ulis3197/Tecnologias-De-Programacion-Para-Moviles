@@ -8,14 +8,13 @@ import {
 } from "react-native";
 import Constants from "expo-constants";
 import { Ionicons } from "@expo/vector-icons";
-import AndriodText from "./src/components/Text/AndriodText";
-import WebText from "./src/components/Text/WebText";
+import CustomText from "./src/components/Text/CustomText";
 
 export default function App() {
-  const CustomText = Platform.select({
-    android: () => AndriodText,
-    web: () => WebText,
-  })();
+  // const CustomText = Platform.select({
+  //   android: () => AndriodText,
+  //   web: () => WebText,
+  // })();
 
   return (
     <View style={styles.container}>
