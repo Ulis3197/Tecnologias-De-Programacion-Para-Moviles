@@ -1,7 +1,8 @@
 import React from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import Card from "../components/Card";
 
 function Welcome() {
   return (
@@ -19,12 +20,50 @@ function Welcome() {
         <Text style={{ color: "#c1c0c4" }}>Hello, </Text>
         <Text style={{ color: "#2b3941" }}>Chris</Text>
       </Text>
-      <View style={styles.cardContainer}>
-        <View style={styles.cardIconContainer}>
-          <AntDesign name="hdd" size={24} color="white"></AntDesign>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        <Card
+          iconName={"hdd"}
+          iconType={"AntDesign"}
+          text={"Start Training"}
+          isDarkBlue
+        ></Card>
+        <Card
+          iconName={"hdd"}
+          iconType={"AntDesign"}
+          text={"Start Training"}
+          isDarkBlue={false}
+        ></Card>
+        <Card
+          iconName={"hdd"}
+          iconType={"AntDesign"}
+          text={"Start Training"}
+          isDarkBlue
+        ></Card>
+        <Card
+          iconName={"hdd"}
+          iconType={"AntDesign"}
+          text={"Start Training"}
+          isDarkBlue={false}
+        ></Card>
+      </ScrollView>
+      <Text style={styles.textHeader}>What are your</Text>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        <View style={styles.symptomsContainer}>
+          <Text style={{ fontSize: 18, fontWeight: "600", color: "#48525e" }}>
+            I'm Fine
+          </Text>
         </View>
-        <Text style={styles.cardText}>Start Training</Text>
-      </View>
+        <View style={styles.symptomsContainer}>
+          <Text style={{ fontSize: 18, fontWeight: "600", color: "#48525e" }}>
+            I'm Fine
+          </Text>
+        </View>
+        <View style={styles.symptomsContainer}>
+          <Text style={{ fontSize: 18, fontWeight: "600", color: "#48525e" }}>
+            I'm Fine
+          </Text>
+        </View>
+      </ScrollView>
     </View>
   );
 }
@@ -71,6 +110,21 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     color: "#48525e",
+  },
+  textHeader: {
+    fontSize: 20,
+    color: "#495558",
+    fontWeight: "bold",
+  },
+  symptomsContainer: {
+    backgroundColor: "#e6ecff",
+    width: 150,
+    paddingHorizontal: 10,
+    paddingVertical: 15,
+    borderRadius: 10,
+    alignItems: "center",
+    marginTop: 15,
+    marginRight: 15,
   },
 });
 
