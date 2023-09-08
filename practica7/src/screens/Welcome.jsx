@@ -1,8 +1,49 @@
 import React from "react";
-import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
+import { Text, View, StyleSheet, Image, ScrollView, FlatList } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import AntDesign from "@expo/vector-icons/AntDesign";
 import Card from "../components/Card";
+import SymptompsCard from "../components/SymptompsCard";
+import Therapist from "../components/Therapist";
+
+const IMAGE = "https://cdn-icons-png.flaticon.com/512/5231/5231019.png";
+
+const THERAPIST = [
+  {
+    id: 1,
+    name: "Dr. Alice Johnson",
+    job: "PhysioTherapist",
+    rate: 5,
+    image: IMAGE,
+  },
+  {
+    id: 2,
+    name: "Dr. Mike Johnson",
+    job: "PhysioTherapist",
+    rate: 4,
+    image: IMAGE,
+  },
+  {
+    id: 3,
+    name: "Dr. Susan Johnson",
+    job: "PhysioTherapist",
+    rate: 3.5,
+    image: IMAGE,
+  },
+  {
+    id: 4,
+    name: "Dr. Jhon Johnson",
+    job: "PhysioTherapist",
+    rate: 4.8,
+    image: IMAGE,
+  },
+];
+
+const CARDS = [
+  {id:1 ,text: "Start Training", isDarkBlue: true, iconName: "hdd", iconType: "AntDesign"},
+  {id:2 ,text: "Start Training", isDarkBlue: false, iconName: "hdd", iconType: "AntDesign"},
+  {id:3 ,text: "Start Training", isDarkBlue: true, iconName: "hdd", iconType: "AntDesign"},
+  {id:4 ,text: "Start Training", isDarkBlue: false, iconName: "hdd", iconType: "AntDesign"},
+];
 
 function Welcome() {
   return (
@@ -11,7 +52,7 @@ function Welcome() {
         <Ionicons name="notifications-outline" size={24} color="black" />
         <Image
           source={{
-            uri: "https://cdn-icons-png.flaticon.com/512/5231/5231019.png",
+            uri: IMAGE,
           }}
           style={styles.headerImage}
         ></Image>
@@ -21,49 +62,39 @@ function Welcome() {
         <Text style={{ color: "#2b3941" }}>Chris</Text>
       </Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <Card
-          iconName={"hdd"}
-          iconType={"AntDesign"}
-          text={"Start Training"}
-          isDarkBlue
-        ></Card>
-        <Card
-          iconName={"hdd"}
-          iconType={"AntDesign"}
-          text={"Start Training"}
-          isDarkBlue={false}
-        ></Card>
-        <Card
-          iconName={"hdd"}
-          iconType={"AntDesign"}
-          text={"Start Training"}
-          isDarkBlue
-        ></Card>
-        <Card
-          iconName={"hdd"}
-          iconType={"AntDesign"}
-          text={"Start Training"}
-          isDarkBlue={false}
-        ></Card>
+        {CARDS.map((card) => (
+          <Card
+            id={card.id}
+            iconName={card.iconName}
+            iconType={card.iconType}
+            text={card.text}
+            isDarkBlue={card.isDarkBlue}
+          ></Card>
+        ))}
       </ScrollView>
       <Text style={styles.textHeader}>What are your</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <View style={styles.symptomsContainer}>
-          <Text style={{ fontSize: 18, fontWeight: "600", color: "#48525e" }}>
-            I'm Fine
-          </Text>
-        </View>
-        <View style={styles.symptomsContainer}>
-          <Text style={{ fontSize: 18, fontWeight: "600", color: "#48525e" }}>
-            I'm Fine
-          </Text>
-        </View>
-        <View style={styles.symptomsContainer}>
-          <Text style={{ fontSize: 18, fontWeight: "600", color: "#48525e" }}>
-            I'm Fine
-          </Text>
-        </View>
+        <SymptompsCard symptom={"fever"}></SymptompsCard>
+        <SymptompsCard symptom={"fever"}></SymptompsCard>
+        <SymptompsCard symptom={"fever"}></SymptompsCard>
+        <SymptompsCard symptom={"fever"}></SymptompsCard>
       </ScrollView>
+      <View style={styles.therapistTitle}>
+        <Text style={styles.titleText}>Popular therapist</Text>
+        <Text>See all</Text>
+      </View>
+      <FlatList
+        data={THERAPIST}
+        renderItem={({ item }) => (
+          <Therapist
+            image={item.image}
+            name={item.name}
+            job={item.job}
+            rate={item.rate}
+          />
+        )}
+        keyExtractor={(item) => item.id}
+      ></FlatList>
     </View>
   );
 }
@@ -116,15 +147,11 @@ const styles = StyleSheet.create({
     color: "#495558",
     fontWeight: "bold",
   },
-  symptomsContainer: {
-    backgroundColor: "#e6ecff",
-    width: 150,
-    paddingHorizontal: 10,
-    paddingVertical: 15,
-    borderRadius: 10,
+  therapistTitle: {
+    marginTop: 30,
+    flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
-    marginTop: 15,
-    marginRight: 15,
   },
 });
 

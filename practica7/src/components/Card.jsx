@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, View, StyleSheet} from 'react-native'
 import AntDesign from "@expo/vector-icons/AntDesign";
 
-export default function Card({isDarkBlue, text, iconName, iconType}) {
+export default function Card({id, isDarkBlue, text, iconName, iconType}) {
     const customStyles = isDarkBlue ? "#537acd" : "white";
     const icon =
       iconType === "Ionicons" ? (
@@ -16,6 +16,7 @@ export default function Card({isDarkBlue, text, iconName, iconType}) {
         styles.cardContainer,
         isDarkBlue ? styles.cardContainerDark : styles.cardContainerLight,
       ]}
+      key={id}
     >
       <View style={[styles.cardIconContainer, isDarkBlue ? styles.cardIconContainerDark : styles.cardIconContainerLight]}>{icon}</View>
       <Text
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#e6ecff",
   },
   cardContainerDark: {
-    backgroundColor: "blue",
+    backgroundColor: "#2362df",
   },
   cardIconContainer: {
     justifyContent: "center",
