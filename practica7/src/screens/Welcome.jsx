@@ -36,6 +36,20 @@ const THERAPIST = [
     rate: 4.8,
     image: IMAGE,
   },
+  {
+    id: 5,
+    name: "Dr. Jhon Johnson",
+    job: "PhysioTherapist",
+    rate: 4.8,
+    image: IMAGE,
+  },
+  {
+    id: 6,
+    name: "Dr. Jhon Johnson",
+    job: "PhysioTherapist",
+    rate: 4.8,
+    image: IMAGE,
+  },
 ];
 
 const CARDS = [
