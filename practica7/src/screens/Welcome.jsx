@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, View, StyleSheet, Image, ScrollView, FlatList } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { AntDesign } from "@expo/vector-icons";
 import Card from "../components/Card";
 import SymptompsCard from "../components/SymptompsCard";
 import Therapist from "../components/Therapist";
@@ -78,11 +79,11 @@ function Welcome() {
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {CARDS.map((card) => (
           <Card
-            id={card.id}
             iconName={card.iconName}
             iconType={card.iconType}
             text={card.text}
             isDarkBlue={card.isDarkBlue}
+            key={card.id}
           ></Card>
         ))}
       </ScrollView>
@@ -108,7 +109,14 @@ function Welcome() {
           />
         )}
         keyExtractor={(item) => item.id}
+        style={{ height: 225 }}
       ></FlatList>
+      <View style={styles.menuContainer}>
+        <AntDesign name="home" size={35} color="#2362df" />
+        <AntDesign name="message1" size={35} color="black" />
+        <AntDesign name="calendar" size={35} color="black" />
+        <AntDesign name="user" size={35} color="black" />
+      </View>
     </View>
   );
 }
@@ -166,6 +174,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+  },
+  menuContainer:{
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+    paddingVertical: 5,
   },
 });
 
