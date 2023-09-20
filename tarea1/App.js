@@ -1,5 +1,12 @@
 import { StatusBar } from "expo-status-bar";
-import { FlatList, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Alert,
+  FlatList,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import Constants from "expo-constants";
 import StyledText from "./src/components/StyledText";
 import Icons from "./src/components/Icons";
@@ -16,12 +23,25 @@ export default function App() {
   const month = currentDate.getMonth() + 1;
   const year = currentDate.getFullYear();
 
+  const handleError = (error) => {
+    Alert.alert("Error", error, [{ text: "Aceptar" }]);
+  };
+
   const handleAddTodo = () => {
-    if (input === "") return;
+    if (input === "")
+      return handleError("Ingresar un nombre a la tarea");
+
+    const existingTodo = todos.some(
+      (todo) => todo.name.toLowerCase() === input.toLowerCase()
+    );
+
+    if (existingTodo)
+      return handleError("Ya existe una tarea con ese nombre");
+
     setTodos([
       ...todos,
       {
-        id: todos.length + 1,
+        id: new Date().toISOString(),
         name: input,
         date: `${day}/${month}/${year}`,
         done: false,
@@ -29,6 +49,22 @@ export default function App() {
     ]);
     setInput("");
   };
+
+  const handleDeleteTodo = (id) => {
+    const newTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(newTodos);
+  };
+
+  const handleDoneTodo = (id) => {
+    const completedTodo = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, done: !todo.done };
+      }
+      return todo;
+    })
+
+    setTodos(completedTodo);
+  }
 
   return (
     <View style={styles.container}>
@@ -49,7 +85,15 @@ export default function App() {
       <View style={styles.listContainer}>
         <FlatList
           data={todos}
-          renderItem={({ item }) => <ToDo name={item.name} date={item.date}/>}
+          renderItem={({ item }) => (
+            <ToDo
+              name={item.name}
+              date={item.date}
+              done={item.done}
+              onPressDelete={() => handleDeleteTodo(item.id)}
+              onPressDone={() => handleDoneTodo(item.id)}
+            />
+          )}
         />
       </View>
       <StatusBar style="auto" />

@@ -5,9 +5,9 @@ import StyledText from './StyledText'
 function StyledButton({text, onPress}) {
   return (
     <TouchableOpacity style={styles.button} onPress={onPress}>
-        <StyledText text={text} fontWeight={"bold"} color={"white"}/>
+      <StyledText text={text} fontWeight={"bold"} color={"white"} />
     </TouchableOpacity>
-  )
+  );
 }
 
 export default StyledButton
