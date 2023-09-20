@@ -13,103 +13,20 @@ import Icons from "./src/components/Icons";
 import StyledButton from "./src/components/StyledButton";
 import ToDo from "./src/components/ToDo";
 import { useState } from "react";
+import { useTodos } from "./src/hooks/useTodos";
 
 export default function App() {
-  const currentDate = new Date();
-  const [input, setInput] = useState("");
-  const [todos, setTodos] = useState([]);
-  const [edit, setEdit] = useState(false);
-  const [update, setUpdate] = useState("");
-
-  const day = currentDate.getDate();
-  const month = currentDate.getMonth() + 1;
-  const year = currentDate.getFullYear();
-
-  const hours = currentDate.getHours();
-  const minutes = currentDate.getMinutes();
-
-  const handleError = (error) => {
-    Alert.alert("Error", error, [{ text: "Aceptar" }]);
-  };
-
-  const handleAddTodo = () => {
-    if (input === "") return handleError("Ingresar un nombre a la tarea");
-
-    const existingTodo = todos.some(
-      (todo) => todo.name.toLowerCase() === input.toLowerCase()
-    );
-
-    if (existingTodo) return handleError("Ya existe una tarea con ese nombre");
-
-    setTodos([
-      ...todos,
-      {
-        id: new Date().toISOString(),
-        name: input,
-        date:
-          "Creado: " + `${day}/${month}/${year}` + " " + `${hours}:${minutes}`,
-        done: false,
-        dateDate: "",
-      },
-    ]);
-    setInput("");
-  };
-
-  const handleDeleteTodo = (id) => {
-    const newTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(newTodos);
-  };
-
-  const handleDoneTodo = (id) => {
-    const completedTodo = todos.map((todo) => {
-      if (todo.id === id) {
-        return { ...todo, done: !todo.done };
-      }
-      return todo;
-    });
-
-    setTodos(completedTodo);
-  };
-
-  const handleEditTodo = (id) => {
-    todos.map((todo) => {
-      if (todo.id === id) {
-        setInput(todo.name);
-        setEdit(true);
-        setUpdate(id);
-      }
-    });
-  };
-
-  const handleUpdateTodo = () => {
-    if (input === "") return handleError("Ingresar un nombre a la tarea");
-
-    const existingTodo = todos.some(
-      (todo) => todo.name.toLowerCase() === input.toLowerCase()
-    );
-
-    if (existingTodo) return handleError("Ya existe una tarea con ese nombre");
-
-    const updatedTodo = todos.map((todo) => {
-      if (todo.id === update) {
-        return {
-          ...todo,
-          name: input,
-          dateDate:
-            "Actualizado: " +
-            `${day}/${month}/${year}` +
-            " " +
-            `${hours}:${minutes}`,
-        };
-      }
-      return todo;
-    });
-
-    setTodos(updatedTodo);
-    setInput("");
-    setEdit(false);
-    setUpdate("");
-  };
+  const {
+    input,
+    todos,
+    edit,
+    setInput,
+    handleAddTodo,
+    handleDeleteTodo,
+    handleDoneTodo,
+    handleEditTodo,
+    handleUpdateTodo,
+  } = useTodos();
 
   return (
     <View style={styles.container}>
