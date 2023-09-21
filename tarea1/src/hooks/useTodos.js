@@ -7,6 +7,15 @@ export const useTodos = () => {
   const [todos, setTodos] = useState([]);
   const [edit, setEdit] = useState(false);
   const [update, setUpdate] = useState("");
+  const [modalVisible, setModalVisible] = useState(false);
+  const [toDo, setToDo] = useState({
+    id: "",
+    name: "",
+    date: "",
+    done: false,
+    dateDate: ""
+  });
+
 
   const day = currentDate.getDate();
   const month = currentDate.getMonth() + 1;
@@ -94,15 +103,25 @@ export const useTodos = () => {
     setUpdate("");
   };
 
+  const handleViewTodo = (item) => {
+    setModalVisible(!modalVisible);
+    setToDo(item);
+  }
+
   return {
     input,
     todos,
     edit,
+    modalVisible,
+    toDo,
+    setToDo,
+    setModalVisible,
     setInput,
     handleAddTodo,
     handleDeleteTodo,
     handleDoneTodo,
     handleEditTodo,
     handleUpdateTodo,
+    handleViewTodo,
   };
 };

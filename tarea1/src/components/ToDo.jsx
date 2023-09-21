@@ -4,7 +4,16 @@ import StyledText from "./StyledText";
 import StyledButton from "./StyledButton";
 import Icons from "./Icons";
 
-function ToDo({ name, date, done, update, onPressDone, onPressEdit, onPressDelete }) {
+function ToDo({
+  name,
+  date,
+  done,
+  update,
+  onPressDone,
+  onPressEdit,
+  onPressDelete,
+  onPressView,
+}) {
   return (
     <View style={[styles.ToDo, done ? styles.done : styles.notDone]}>
       <View style={{ justifyContent: "center" }}>
@@ -21,23 +30,30 @@ function ToDo({ name, date, done, update, onPressDone, onPressEdit, onPressDelet
           <Icons
             iconType={"MaterialIcons"}
             name={done ? "cancel" : "done"}
-            size={28}
+            size={26}
             color={done ? "red" : "green"}
             onPress={onPressDone}
           />
           <Icons
             iconType={"MaterialIcons"}
             name={"mode-edit"}
-            size={28}
+            size={26}
             color={"#f7dd72"}
             onPress={onPressEdit}
           />
           <Icons
             iconType={"MaterialIcons"}
             name={"delete"}
-            size={28}
+            size={26}
             color={"red"}
             onPress={onPressDelete}
+          />
+          <Icons
+            iconType={"Ionicons"}
+            name={"eye"}
+            size={26}
+            color={"black"}
+            onPress={onPressView}
           />
         </View>
         <View>

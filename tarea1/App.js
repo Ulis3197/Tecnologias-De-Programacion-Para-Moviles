@@ -2,6 +2,8 @@ import { StatusBar } from "expo-status-bar";
 import {
   Alert,
   FlatList,
+  Modal,
+  Pressable,
   StyleSheet,
   Text,
   TextInput,
@@ -20,12 +22,17 @@ export default function App() {
     input,
     todos,
     edit,
+    modalVisible,
+    toDo,
+    setToDo,
+    setModalVisible,
     setInput,
     handleAddTodo,
     handleDeleteTodo,
     handleDoneTodo,
     handleEditTodo,
     handleUpdateTodo,
+    handleViewTodo,
   } = useTodos();
 
   return (
@@ -59,10 +66,33 @@ export default function App() {
               onPressDone={() => handleDoneTodo(item.id)}
               onPressEdit={() => handleEditTodo(item.id)}
               onPressDelete={() => handleDeleteTodo(item.id)}
+              onPressView={() => handleViewTodo(item)}
             />
           )}
         />
       </View>
+
+      <Modal animationType="slide" transparent={true} visible={modalVisible}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <StyledText text={"Nombre: " + toDo.name} paddingVertical={5} />
+            <StyledText text={toDo.date} paddingVertical={5} />
+            <StyledText
+              text={"Estatus: " + (toDo.done ? "Completada" : "No completada")}
+              paddingVertical={5}
+            />
+            <StyledText
+              text={toDo.dateDate ? toDo.dateDate : "Actualizado: "}
+              paddingVertical={5}
+            />
+            <StyledButton
+              text={"Cerrar"}
+              onPress={() => setModalVisible(!modalVisible)}
+            />
+          </View>
+        </View>
+      </Modal>
+
       <StatusBar style="auto" />
     </View>
   );
@@ -98,5 +128,17 @@ const styles = StyleSheet.create({
   listContainer: {
     marginHorizontal: 20,
     marginTop: 20,
+  },
+  centeredView: {
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
+  },
+  modalView: {
+    backgroundColor: "white",
+    width: "80%",
+    borderRadius: 10,
+    paddingHorizontal: 20,
+    paddingVertical: 20,
   },
 });

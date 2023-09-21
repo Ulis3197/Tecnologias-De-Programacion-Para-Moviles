@@ -1,6 +1,7 @@
 import React from "react";
 import { Feather } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 function Icons({ iconType, name, size, color, onPress }) {
   return (
@@ -15,6 +16,9 @@ function Icons({ iconType, name, size, color, onPress }) {
           color={color}
           onPress={onPress}
         />
+      )}
+      {iconType === "Ionicons" && (
+        <Ionicons name={name} size={size} color={color} onPress={onPress} />
       )}
     </>
   );
