@@ -16,7 +16,6 @@ export const useTodos = () => {
     dateDate: ""
   });
 
-
   const day = currentDate.getDate();
   const month = currentDate.getMonth() + 1;
   const year = currentDate.getFullYear();
