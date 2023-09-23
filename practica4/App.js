@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, Dimensions } from "react-native";
+import { StyleSheet, View } from "react-native";
 import CharactersScreen from "./src/screens/CharactersScreen";
+import Constants from "expo-constants";
 
 export default function App() {
   return (
@@ -13,8 +14,8 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    width: Dimensions.get("screen").width,
-    height: Dimensions.get("screen").height,
-    marginHorizontal: 20,
+    flex: 1,
+    backgroundColor: "#272B33",
+    paddingTop: Constants.statusBarHeight,
   },
 });

@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, StatusBar, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  StyleSheet,
+  View,
+} from "react-native";
+import Character from "../components/Character";
 
 const CharactersScreen = () => {
   const [characters, setCharacters] = useState([]);
@@ -22,19 +27,20 @@ const CharactersScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text>CHARACTERS</Text>
       <FlatList
         data={characters}
         renderItem={({ item }) => (
-          <View style={styles.itemContainer}>
-            <Text>{item.id}</Text>
-            <Text>{item.name}</Text>
-            <Text>{item.gender}</Text>
-            <Text>{item.species}</Text>
-            <Text>{item.status}</Text>
-          </View>
+          <Character
+            name={item.name}
+            status={item.status}
+            species={item.species}
+            location={item.location.name}
+            image={item.image}
+            episode={item.episode[0]}
+          />
         )}
         keyExtractor={(item) => item.id}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );
@@ -44,8 +50,7 @@ export default CharactersScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    paddingTop: StatusBar.currentHeight,
+    marginHorizontal: 10,
+    marginVertical: 20,
   },
 });
