@@ -6,7 +6,7 @@ import {
 } from "react-native";
 import Character from "../components/Character";
 
-const CharactersScreen = () => {
+const CharactersScreen = ({navigation}) => {
   const [characters, setCharacters] = useState([]);
 
   const getApiData = async () => {
@@ -37,6 +37,8 @@ const CharactersScreen = () => {
             location={item.location.name}
             image={item.image}
             episode={item.episode[0]}
+            navigation={navigation}
+            item={item}
           />
         )}
         keyExtractor={(item) => item.id}

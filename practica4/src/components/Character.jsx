@@ -1,8 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Image } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Image,
+  Button,
+  TouchableOpacity,
+  Text,
+} from "react-native";
 import StyledText from "./StyledText";
 
-function Character({ name, status, species, location, image, episode }) {
+function Character({
+  name,
+  status,
+  species,
+  location,
+  image,
+  episode,
+  navigation,
+  item,
+}) {
   const [currentEpisode, setCurrentEpisode] = useState();
 
   const getEpisode = async () => {
@@ -72,6 +88,12 @@ function Character({ name, status, species, location, image, episode }) {
           color={"white"}
           fontSize={12}
         />
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("Character", {item: item})}
+        >
+          <StyledText color={"white"} fontSize={12} text={"Ver más"} />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -94,9 +116,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   img: {
-    width: 150,
-    height: 150,
+    width: 170,
+    height: 170,
     borderTopLeftRadius: 20,
     borderBottomLeftRadius: 20,
+  },
+  button: {
+    borderRadius: 20,
+    paddingVertical: 10,
   },
 });
