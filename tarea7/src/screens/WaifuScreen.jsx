@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: StatusBar.currentHeight,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#b6b7b8",
     alignItems: "center",
   },
   button: {
