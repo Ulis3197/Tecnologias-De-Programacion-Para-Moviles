@@ -10,17 +10,33 @@ import {
 } from "react-native";
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 import { USER } from "../data/Images";
 import { NUMBERS } from "../data/Numbers";
 import ButtonNumber from "../components/ButtonNumber";
+import { useAppContext } from "../hooks/useAppContext";
+import IconTypeTheme from "../components/IconTypeTheme";
 
 const Send = () => {
+  const { isDarkMode, toggleTheme } = useAppContext();
   return (
-    <View>
+    <View
+      style={{
+        paddingHorizontal: 20,
+        backgroundColor: isDarkMode ? "black" : "white",
+        flex: 1,
+      }}
+    >
       <View style={styles.header}>
-        <AntDesign name="arrowleft" size={30} color="white" />
-        <Text style={{ color: "white", fontSize: 20 }}>Send</Text>
-        <AntDesign name="message1" size={30} color="white" />
+        <AntDesign
+          name="arrowleft"
+          size={30}
+          color={isDarkMode ? "white" : "black"}
+        />
+        <Text style={{ color: isDarkMode ? "white" : "black", fontSize: 20 }}>
+          Send
+        </Text>
+        <IconTypeTheme />
       </View>
       <View style={styles.userInfo}>
         <Image
@@ -31,7 +47,7 @@ const Send = () => {
       <Text
         style={{
           fontSize: 25,
-          color: "white",
+          color: isDarkMode ? "white" : "black",
           alignSelf: "center",
           marginTop: 10,
           fontWeight: "600",
@@ -52,10 +68,10 @@ const Send = () => {
       </Text>
       <Text
         style={{
-          color: "white",
-          fontSize: 60,
+          color: isDarkMode ? "white" : "black",
+          fontSize: 50,
           alignSelf: "center",
-          marginTop: 30,
+          marginTop: 10,
         }}
       >
         $340
@@ -73,19 +89,20 @@ const Send = () => {
           width: "100%",
           flexWrap: "wrap",
           justifyContent: "space-evenly",
+          paddingHorizontal: 20,
         }}
       >
-        {NUMBERS.map((number) => {
-          return <ButtonNumber data={number} />;
+        {NUMBERS.map((number, index) => {
+          return <ButtonNumber data={number} key={index} />;
         })}
       </View>
       <TouchableOpacity
         style={{
-          backgroundColor: "#eee273",
+          backgroundColor: "#EAF984",
           paddingVertical: 15,
           borderRadius: 30,
           alignItems: "center",
-          marginTop: 20,
+          marginTop: 10,
         }}
       >
         <Text style={{ fontSize: 25, fontWeight: "500" }}>Send</Text>
@@ -101,6 +118,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    paddingTop: 10,
   },
   userInfo: {
     alignItems: "center",
