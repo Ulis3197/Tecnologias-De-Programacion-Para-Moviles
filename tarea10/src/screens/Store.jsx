@@ -29,11 +29,16 @@ const BURGERS = [
   { id: 4, name: "BBQ Burger", price: "$21.99" },
 ];
 
-function Store() {
+function Store({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <Ionicons name="ios-menu-outline" size={30} color="#21B2B2" />
+        <Ionicons
+          name="ios-menu-outline"
+          size={30}
+          color="#21B2B2"
+          onPress={() => navigation.openDrawer()}
+        />
         <Ionicons name="notifications" size={30} color="#21B2B2" />
       </View>
       <Text style={{ fontSize: 24, fontWeight: "400", marginTop: 30 }}>

@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { COSAS } from "../data/img";
 
-function Home() {
+function Home({ navigation }) {
   return (
     <View style={styles.container}>
       <Image
@@ -25,7 +25,10 @@ function Home() {
         <Text style={styles.text2}>Find the best shopping experience with</Text>
         <Text style={styles.text2}>us by your favourite daily needs!</Text>
       </View>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate("LogIn")}
+      >
         <Text style={{ color: "white", fontSize: 20 }}>{"Get Started"}</Text>
       </TouchableOpacity>
     </View>

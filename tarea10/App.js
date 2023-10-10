@@ -6,36 +6,34 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import Home from "./src/screens/Home";
 import LogIn from "./src/screens/LogIn";
 import { NavigationContainer } from "@react-navigation/native";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Store from "./src/screens/Store";
+import SignUp from "./src/screens/SignUp";
+import AppContextProvider from "./src/context/AppContext";
+import BottomTabs from "./src/routes/BottomTabs";
+import { createStackNavigator } from "@react-navigation/stack";
+import Drawer from "./src/routes/Drawer";
 
-const Tab = createMaterialBottomTabNavigator();
+const Main = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Home></Home>
-    </View>
-    // <NavigationContainer>
-    //   <Tab.Navigator
-    //     initialRouteName="Home"
-    //     activeColor="#f0edf6"
-    //     inactiveColor="#3e2465"
-    //     barStyle={{ backgroundColor: "#694fad" }}
-    //   >
-    //     <Tab.Screen
-    //       name="Feed"
-    //       component={Home}
-    //       options={{
-    //         tabBarLabel: "Home",
-    //         tabBarIcon: ({ color }) => (
-    //           <MaterialCommunityIcons name="home" color={color} size={26} />
-    //         ),
-    //       }}
-    //     />
-    //     <Tab.Screen name="LogIn" component={LogIn} />
-    //   </Tab.Navigator>
-    // </NavigationContainer>
+    <AppContextProvider>
+      <View style={styles.container}>
+        <NavigationContainer>
+          <Main.Navigator
+            initialRouteName="Home"
+            screenOptions={{
+              headerShown: false,
+            }}
+          >
+            <Main.Screen name="Home" component={Home} />
+            <Main.Screen name="LogIn" component={LogIn} />
+            <Main.Screen name="SignUp" component={SignUp} />
+            <Main.Screen name="Drawer" component={Drawer} />
+          </Main.Navigator>
+        </NavigationContainer>
+      </View>
+    </AppContextProvider>
   );
 }
 
