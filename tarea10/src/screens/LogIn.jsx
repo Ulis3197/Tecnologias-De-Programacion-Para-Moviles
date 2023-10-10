@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Alert,
   Image,
   StyleSheet,
   Text,
@@ -24,8 +25,21 @@ function LogIn({ navigation }) {
     setPasswordInput(text);
   };
 
+  const showAlert = (title, msg) =>
+    Alert.alert(title, msg, [
+      {
+        text: "Cancelar",
+        onPress: () => console.log("Cancelar"),
+        style: "cancel",
+      },
+      { text: "Confirmar", onPress: () => console.log("confirmar") },
+    ]);
+
   const onSubmit = () => {
     if (emailInput === "" && passwordInput === "") {
+      const title = "Campos vacios";
+      const msg = "Por favor ingresa tus datos";
+      showAlert(title, msg);
       return;
     }
     if (emailInput === email && passwordInput === password) {
@@ -33,7 +47,10 @@ function LogIn({ navigation }) {
       setPasswordInput("");
       navigation.navigate("Drawer");
     } else {
-      console.log("Incorrecto");
+      const title = "Credenciales incorrectas";
+      const msg = "Por favor ingresa tus datos correctamente";
+      showAlert(title, msg);
+      return;
     }
   };
 
