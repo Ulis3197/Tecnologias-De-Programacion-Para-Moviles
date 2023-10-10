@@ -5,7 +5,6 @@ import {
   View,
   TextInput,
   FlatList,
-  Image,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";

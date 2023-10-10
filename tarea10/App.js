@@ -1,15 +1,12 @@
-import { StatusBar } from "expo-status-bar";
+
 import { StyleSheet, Text, View } from "react-native";
 import Constants from "expo-constants";
 
-import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import Home from "./src/screens/Home";
 import LogIn from "./src/screens/LogIn";
 import { NavigationContainer } from "@react-navigation/native";
-import Store from "./src/screens/Store";
 import SignUp from "./src/screens/SignUp";
 import AppContextProvider from "./src/context/AppContext";
-import BottomTabs from "./src/routes/BottomTabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import Drawer from "./src/routes/Drawer";
 

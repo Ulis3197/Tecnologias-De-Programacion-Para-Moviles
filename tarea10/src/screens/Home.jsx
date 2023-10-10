@@ -3,8 +3,6 @@ import {
   StyleSheet,
   Text,
   View,
-  TextInput,
-  FlatList,
   Image,
   TouchableOpacity,
 } from "react-native";
