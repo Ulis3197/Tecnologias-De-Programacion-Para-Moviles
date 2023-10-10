@@ -3,9 +3,9 @@ import { createContext, useState } from "react";
 export const AppContext = createContext();
 
 const AppContextProvider = ({ children }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState("Ulises RF");
+  const [email, setEmail] = useState("Ulises");
+  const [password, setPassword] = useState("123");
 
   const handleName = (text) => {
     setName(text);
